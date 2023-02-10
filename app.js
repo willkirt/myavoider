@@ -22,8 +22,13 @@ mongoose.connect(db.mongoURI,{
     console.log(err);
 });
 
-require('./game/highScore.js');
+require('./config/highScore.js');
 var highScore = mongoose.model("highScore");
+
+// Main routes
+app.get('/', function(req, res){
+    res.redirect('./game/index.html');
+});
 
 app.listen(port, function(){
     console.log(`Running on port ${port}.`);

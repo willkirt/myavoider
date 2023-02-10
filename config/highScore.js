@@ -1,11 +1,11 @@
 var mongoose = require("mongoose");
-var schema = mongoose.Schema;
-var schema = new Schema({
-    name:{
+var Schema = mongoose.Schema;
+var Schema = new Schema({
+    Name:{
         type:String,
         required:true
     },
-    score:{
+    Score:{
         type:Number,
         required:true
     }

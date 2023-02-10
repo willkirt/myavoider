@@ -7,7 +7,6 @@ const { response } = require("express");
 var port = process.env.port||5000;
 var db = require("./config/database.js");
 
-
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
 app.use(express.json());
@@ -22,6 +21,9 @@ mongoose.connect(db.mongoURI,{
 }).catch(function(err){
     console.log(err);
 });
+
+require('./game/highScore.js');
+var highScore = mongoose.model("highScore");
 
 app.listen(port, function(){
     console.log(`Running on port ${port}.`);

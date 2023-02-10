@@ -198,7 +198,7 @@ function keyPressDown(e){
 //---Main Menu---
 gameStates[0] = function(){
     highScoreElements.style.display = "none";
-    highScoreLink.style.display = "block";
+    highScoreLink.style.display = "flex";
     ctx.drawImage(bgMain,0,0,c.width,c.height);
     ctx.save();
     ctx.font = "30px Arial";
@@ -281,7 +281,7 @@ gameStates[1] = function(){
 
 //---Game Over Screen---
 gameStates[2] = function(){
-    highScoreElements.style.display = "block";
+    highScoreElements.style.display = "flex";
     //currentHighscore = 
     lastScore = score;
     if(score > currentHighscore){

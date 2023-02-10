@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/config/style.css">
     <title>Asteroid Avoidance</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>    
     <script>
@@ -13,16 +13,17 @@
             if(document.getElementById("nameField").value == "")
             {
                 event.preventDefault();
-                document.getElementById("error").innerHTML = "NAME CANNOT BE EMPTY";
+                document.getElementById("nameField").placeholder = "NAME CANNOT BE EMPTY";
             }
         }
     </script>
-    <canvas width="800" height="600" style="border:1px solid black; background-color: black;"></canvas>
-    <a href="scores.html" class="scoresLink" style="position: absolute; left:305px; top:350px; color: aliceblue;">Click here to see the highscores</a>
+    <canvas width="800" height="600"></canvas>
+    <a href="scores.html" class="scoresLink">Click here to see the highscores</a>
     <form method="post" action="/setHighscore" class="highscore" onsubmit="return checkForm()">
-        <input type="text" placeholder="Enter your name for High Score" id="nameField" name="Name" style="position:absolute; left:300px; top:400px; width:200px;" />
-        <input type="text" value="" id = "Highscore" name = "Score" style = "display: none";/>
-        <button style="position:absolute; left:350px; top:450px; width:100px;">Submit</button>
+        <input type="text" placeholder="Enter your name for High Score" id="nameField" name="Name"/>
+        <input type="text" value="" id = "Highscore" name = "Score" style="display:none"/>
+        <br>
+        <button>Submit</button>
     </form>
     <script src="script.js"></script>
 </body>

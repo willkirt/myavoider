@@ -1,0 +1,58 @@
+html,
+body {
+    display: grid;
+    background-color: gray;
+}
+
+canvas {
+    position: fixed;
+    background-color: black;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -400px;
+}
+
+a {
+    position: fixed;
+    width: 300px;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    margin-top: 50px;
+    margin-left: -150px;
+    color: aliceblue;
+}
+
+input {
+    position: fixed;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    margin-top: 50px;
+    margin-left: -100px;
+}
+
+button {
+    position: fixed;
+    width: 100px;
+    top: 50%;
+    left: 50%;
+    margin-top: 75px;
+    margin-left: -50px;
+}
+
+p {
+    position: static;
+    margin: 5px;
+    padding-left: 5px;
+    width: 250px;
+    border: 2px solid black;
+}
+
+h1 {
+    width: 300px;
+    justify-content: center;
+    padding-left: 10px;
+    margin-top: 25px;
+}

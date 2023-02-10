@@ -22,13 +22,33 @@ mongoose.connect(db.mongoURI,{
     console.log(err);
 });
 
-//require('./config/highScore.js');
-//var highScore = mongoose.model("highScore");
+require('./config/highscoreSchema.js');
+var highscoreSchema = mongoose.model("highscore");
 
-// Main routes
+// Main route
 app.get('/', function(req, res){
     res.redirect('./game/index.html');
 });
+
+// Call the setHighscore function to add the current score to the database
+app.post('/setHighscore', function(req, res){
+    var setHighscore = {
+        Name:req.body.Name,
+        Score:req.body.Score
+    }
+    new highscoreSchema(req.body).save().then(function(){
+        console.log(setHighscore);
+        lastScore = req.body.Score;
+        res.redirect('/scores.html');
+    })
+})
+
+// Call the getHighscores function to retrieve the list of current highscores for the game
+app.get('/getHighscores', function(req, res){
+    highscoreSchema.find({}).sort({Score: -1}).then(function(index){
+        res.json({index});
+    })
+})
 
 app.listen(port, function(){
     console.log(`Running on port ${port}.`);

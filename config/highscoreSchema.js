@@ -11,4 +11,4 @@ var Schema = new Schema({
     }
 });
 
-//mongoose.model("highscore", Schema);
+mongoose.model("highscore", Schema);

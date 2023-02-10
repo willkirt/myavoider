@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highscores</title>
+</head>
+<body id = "Scores">
+    <a href="index.html">Click here to play again</a>
+    <br>
+    <h1>Highscores</h1>
+    <br>
+    <script>
+        fetch('/getHighscores').then(function(res){
+            res.json().then(function(highscoresList){
+                var i = 0;
+                for (let player of highscoresList.index){
+                    var playerName = document.createElement('p');
+                    playerName.innerHTML = player.Name + ': ' + player.Score;
+                    playerName.className = 'scoring';
+                    document.getElementById('Scores').appendChild(playerName);
+                    i++;
+                }
+            })
+        })
+    </script>
+</body>
+</html>

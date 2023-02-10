@@ -9,7 +9,8 @@ var score = 0;
 var gameStates = [];
 var currentState = 0;
 var ship;
-var highScore = 0;
+var currentHighscore = 0;
+var lastScore = 0;
 var bgMain = new Image();
 var cookieSprite = new Image();
 var highScoreElements = document.querySelector('.highscore');
@@ -292,14 +293,17 @@ gameStates[1] = function(){
 //---Game Over Screen---
 gameStates[2] = function(){
     highScoreElements.style.display = "block";
-    if(score > highScore){
-        highScore = score;
+    lastScore = score;
+    if(score > currentHighscore){
+        var newHighScore = document.getElementById("Highscore");
+        newHighScore.value = score.toString();
+        currentHighscore = score;
         ctx.save();
         ctx.font = "30px Arial";
         ctx.fillStyle = "white";
         ctx.textAlign = "center"
         ctx.fillText("Game Over, Your score was: " + score.toString(), c.width/2, c.height/2 - 60);
-        ctx.fillText("Your New High Score is: " + highScore.toString() , c.width/2, c.height/2 - 30);
+        ctx.fillText("Your New High Score is: " + currentHighscore.toString() , c.width/2, c.height/2 - 30);
         ctx.fillText("New Record!!", c.width/2, c.height/2 );
         ctx.font = "15px Arial";
         ctx.fillText("Press Enter to Start", c.width/2, c.height/2 + 20);
@@ -312,7 +316,7 @@ gameStates[2] = function(){
         ctx.fillStyle = "white";
         ctx.textAlign = "center"
         ctx.fillText("Game Over, Your score was: " + score.toString(), c.width/2, c.height/2 - 60);
-        ctx.fillText("Your high Score is: " + highScore.toString(), c.width/2, c.height/2 - 30);
+        ctx.fillText("Your high Score is: " + currentHighscore.toString(), c.width/2, c.height/2 - 30);
         ctx.font = "15px Arial";
         ctx.fillText("Press Enter to Start", c.width/2, c.height/2 + 20);
         ctx.restore();

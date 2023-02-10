@@ -22,8 +22,8 @@ mongoose.connect(db.mongoURI,{
     console.log(err);
 });
 
-require('./config/highScore.js');
-var highScore = mongoose.model("highScore");
+//require('./config/highScore.js');
+//var highScore = mongoose.model("highScore");
 
 // Main routes
 app.get('/', function(req, res){

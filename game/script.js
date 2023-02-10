@@ -180,7 +180,7 @@ function keyPressDown(e){
     if (gameOver == true) {
         if (e.keyCode === 13) {
 
-            if(currentState == 2){
+            if(currentState == 2 || currentState == 3){
                 currentState = 0;
                 score = 0;
                 numAsteroids = 10;
@@ -194,8 +194,13 @@ function keyPressDown(e){
                 currentState = 1;
                 main();
                 scoreTimer();
+            }            
+        }
+        if (e.keyCode === 16) {
+            if (currentState == 0){
+                currentState = 3;
+                main();
             }
-            
         }
     }
 }

@@ -39,7 +39,7 @@ app.post('/setHighscore', function(req, res){
     new highscoreSchema(req.body).save().then(function(){
         console.log(setHighscore);
         lastScore = req.body.Score;
-        res.redirect('/scores.html');
+        res.redirect('/index.html');
     })
 })
 

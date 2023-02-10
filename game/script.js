@@ -14,6 +14,7 @@ var lastScore = 0;
 var bgMain = new Image();
 var cookieSprite = new Image();
 var highScoreElements = document.querySelector('.highscore');
+var highScoreLink = document.querySelector('.scoresLink');
 
 bgMain.src = "images/rocks.jpg";
 cookieSprite.src = "images/cookie.png";
@@ -181,27 +182,13 @@ function keyPressDown(e){
     if (gameOver == true) {
         if (e.keyCode === 13) {
 
-            if(currentState == 2 || currentState == 3){
-                currentState = 0;
-                score = 0;
-                numAsteroids = 10;
-                asteroids = [];
-                gameStart();
-                main();
-            }
-            else{
+            if(currentState != 2){
                 gameStart();
                 gameOver = false;
                 currentState = 1;
                 main();
                 scoreTimer();
             }            
-        }
-        if (e.keyCode === 16) {
-            if (currentState == 0){
-                currentState = 3;
-                main();
-            }
         }
     }
 }
@@ -211,6 +198,7 @@ function keyPressDown(e){
 //---Main Menu---
 gameStates[0] = function(){
     highScoreElements.style.display = "none";
+    highScoreLink.style.display = "block";
     ctx.drawImage(bgMain,0,0,c.width,c.height);
     ctx.save();
     ctx.font = "30px Arial";
@@ -224,6 +212,7 @@ gameStates[0] = function(){
 
 //---Game Scene---
 gameStates[1] = function(){
+    highScoreLink.style.display = "none";
     //Draws score to the HUD
     ctx.save();
     ctx.font = "15px Arial";
@@ -293,10 +282,11 @@ gameStates[1] = function(){
 //---Game Over Screen---
 gameStates[2] = function(){
     highScoreElements.style.display = "block";
+    //currentHighscore = 
     lastScore = score;
     if(score > currentHighscore){
         var newHighScore = document.getElementById("Highscore");
-        newHighScore.value = score.toString();
+        newHighScore.value = score;
         currentHighscore = score;
         ctx.save();
         ctx.font = "30px Arial";
@@ -305,8 +295,6 @@ gameStates[2] = function(){
         ctx.fillText("Game Over, Your score was: " + score.toString(), c.width/2, c.height/2 - 60);
         ctx.fillText("Your New High Score is: " + currentHighscore.toString() , c.width/2, c.height/2 - 30);
         ctx.fillText("New Record!!", c.width/2, c.height/2 );
-        ctx.font = "15px Arial";
-        ctx.fillText("Press Enter to Start", c.width/2, c.height/2 + 20);
         ctx.restore();
 
     }
@@ -316,13 +304,11 @@ gameStates[2] = function(){
         ctx.fillStyle = "white";
         ctx.textAlign = "center"
         ctx.fillText("Game Over, Your score was: " + score.toString(), c.width/2, c.height/2 - 60);
-        ctx.fillText("Your high Score is: " + currentHighscore.toString(), c.width/2, c.height/2 - 30);
+        ctx.fillText("The current high Score is: " + currentHighscore.toString(), c.width/2, c.height/2 - 30);
         ctx.font = "15px Arial";
         ctx.fillText("Press Enter to Start", c.width/2, c.height/2 + 20);
         ctx.restore();
-    }
-
-    
+    }   
 }
 
 
